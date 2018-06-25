@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CNN入门 | Mlq&#39;s Road</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从走马观花到玩家。  CNN经典模型参考：  1、 https://yq.aliyun.com/articles/176612 CNN发展历程  模型对比https://arxiv.org/pdf/1605.07678.pdf AN ANALYSIS OF DEEP NEURAL NETWORK MODELS FOR PRACTICAL APPLICATIONS  https://blog.csd">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNN入门">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/CNN-入门/index.html">
+<meta property="og:site_name" content="Mlq&#39;s Road">
+<meta property="og:description" content="从走马观花到玩家。  CNN经典模型参考：  1、 https://yq.aliyun.com/articles/176612 CNN发展历程  模型对比https://arxiv.org/pdf/1605.07678.pdf AN ANALYSIS OF DEEP NEURAL NETWORK MODELS FOR PRACTICAL APPLICATIONS  https://blog.csd">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/compare.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/演化图.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/lenet.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/alex.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/vgg.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/googlenet1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/googlenet.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/inception3.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/resnet.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/squeezenet.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/12/CNN-入门/xception.png">
+<meta property="og:updated_time" content="2018-06-13T03:25:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CNN入门">
+<meta name="twitter:description" content="从走马观花到玩家。  CNN经典模型参考：  1、 https://yq.aliyun.com/articles/176612 CNN发展历程  模型对比https://arxiv.org/pdf/1605.07678.pdf AN ANALYSIS OF DEEP NEURAL NETWORK MODELS FOR PRACTICAL APPLICATIONS  https://blog.csd">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/12/CNN-入门/compare.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Mlq&#39;s Road" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mlq&#39;s Road</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Up and cool!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CNN-入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/CNN-入门/" class="article-date">
+  <time datetime="2018-06-12T02:13:17.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习/">学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CNN入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从走马观花到玩家。</p>
+<hr>
+<h2 id="CNN经典模型"><a href="#CNN经典模型" class="headerlink" title="CNN经典模型"></a>CNN经典模型</h2><p>参考：</p>
+<ul>
+<li>1、 <a href="https://yq.aliyun.com/articles/176612" target="_blank" rel="noopener">https://yq.aliyun.com/articles/176612</a> CNN发展历程</li>
+</ul>
+<h3 id="模型对比"><a href="#模型对比" class="headerlink" title="模型对比"></a>模型对比</h3><p><a href="https://arxiv.org/pdf/1605.07678.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1605.07678.pdf</a> AN ANALYSIS OF DEEP NEURAL NETWORK MODELS FOR PRACTICAL APPLICATIONS</p>
+<img src="/2018/06/12/CNN-入门/compare.png">
+<p><a href="https://blog.csdn.net/u010402786/article/details/52433324" target="_blank" rel="noopener">https://blog.csdn.net/u010402786/article/details/52433324</a> Inception解析</p>
+<img src="/2018/06/12/CNN-入门/演化图.png">
+<h3 id="LeNet5-by-LeCun-1998-5层"><a href="#LeNet5-by-LeCun-1998-5层" class="headerlink" title="LeNet5 by LeCun 1998 5层"></a>LeNet5 by LeCun 1998 5层</h3><p>用到了CNN三个特性：1. 局部感知、2. 下采样、3. 权值共享。</p>
+<img src="/2018/06/12/CNN-入门/lenet.png" title="lenet">
+<p>创新：</p>
+<ul>
+<li>卷积神经网络使用 3 层架构：卷积、下采样、非线性激活函数</li>
+<li>使用卷积提取图像空间特征</li>
+<li>下采样使用了图像平均稀疏性</li>
+<li>激活函数采用了 tanh 或者 sigmoid 函数</li>
+<li>多层神经网络（MLP）作为最后的分类器</li>
+<li>层之间使用稀疏连接矩阵，以避免大的计算成本</li>
+</ul>
+<p>1998-2010有一段GAP， 随着CPU和GPU速度不断提升，在性能和存储上的飞跃，让深度神经网络更加可算，开启新大门</p>
+<h3 id="AlexNet-by-Alex-2012-8层"><a href="#AlexNet-by-Alex-2012-8层" class="headerlink" title="AlexNet by Alex 2012 8层"></a>AlexNet by Alex 2012 8层</h3><p>思想：大的卷积核能捕获图像当中相似的特征<br>特点：可以学习更复杂的图像高维特征</p>
+<img src="/2018/06/12/CNN-入门/alex.png">
+<p>创新：</p>
+<ul>
+<li>使用 ReLU 函数作为激活函数，降低了 Sigmoid 类函数的计算量</li>
+<li>利用 dropout 技术在训练期间选择性地剪掉某些神经元，避免模型过度拟合</li>
+<li>引入 max-pooling 技术</li>
+<li>利用双 GPU NVIDIA GTX 580 显著减少训练时间</li>
+</ul>
+<h3 id="VGG-by-牛津大学-2014-11-19层"><a href="#VGG-by-牛津大学-2014-11-19层" class="headerlink" title="VGG by 牛津大学 2014 11~19层"></a>VGG by 牛津大学 2014 11~19层</h3><p>在每个卷积层使用更小的3*3卷积核，连续使用小的卷积核对图像进行多次卷积。</p>
+<img src="/2018/06/12/CNN-入门/vgg.png" title="vgg">
+<p>创新：</p>
+<ul>
+<li>使用多个小卷积核串联模仿大卷积核对图像进行局部感知。</li>
+<li>训练时间变长，但是预测时间及参数都减少了。</li>
+</ul>
+<h3 id="Inception系列-by-google"><a href="#Inception系列-by-google" class="headerlink" title="Inception系列 by google"></a>Inception系列 by google</h3><p>GoogLeNet之前，主流网络追求更多更宽，增大网络有如下缺点：</p>
+<ul>
+<li>参数太多，容易过拟合，若训练数据集有限；</li>
+<li>网络越大计算复杂度越大，难以应用；</li>
+<li>网络越深，梯度越往后穿越容易消失（梯度弥散），难以优化模型</li>
+</ul>
+<h4 id="GoogLeNet（Inception-V1）2014"><a href="#GoogLeNet（Inception-V1）2014" class="headerlink" title="GoogLeNet（Inception V1）2014"></a>GoogLeNet（Inception V1）2014</h4><p>Inception v1的网络，将1x1，3x3，5x5的conv和3x3的pooling，堆叠在一起，一方面增加了网络的width，另一方面增加了网络对尺度的适应性.<br>5×5的卷积核所需的计算量就太大了，造成了特征图厚度很大。在3x3前，5x5前，max pooling后分别加上了1x1的卷积核起到了降低特征图厚度的作用，也就是Inception v1的网络结构。 </p>
+<img src="/2018/06/12/CNN-入门/googlenet1.png">
+<img src="/2018/06/12/CNN-入门/googlenet.png">
+<p>使用1*1卷积核（NiN）减少后续并行操作的特征数量，称为”bottleneck layer”，操作数减少10倍。<br>成功原因是输入特征相关，通过1*1的卷积组合去冗余。<br>能够有效地减少计算资源，在相同的计算成本下，有更好的性能提升框架。</p>
+<h4 id="Inception-V2-2015"><a href="#Inception-V2-2015" class="headerlink" title="Inception V2 2015"></a>Inception V2 2015</h4><p>在 googleNet 中加入一个Batch-normalized层<br>另外一方面学习VGG用2个3x3的conv替代inception模块中的5x5，既降低了参数数量，也加速计算； </p>
+<img src="/2018/06/12/CNN-入门/inception3.png">
+<p>思想：</p>
+<ul>
+<li>通过构建平衡深度和宽度的网络，最大化网络的信息流。在进入 pooling 层之前增加 feature maps</li>
+<li>当网络层数深度增加时，特征的数量或层的宽度也相对应地增加</li>
+<li>在每一层使用宽度增加以增加下一层之前的特征的组合</li>
+<li>只使用 3x3 卷积</li>
+</ul>
+<h3 id="ResNet-2015"><a href="#ResNet-2015" class="headerlink" title="ResNet 2015"></a>ResNet 2015</h3><p>输出的是两个连续的卷积层，并且输入时绕到下一层去。</p>
+<img src="/2018/06/12/CNN-入门/resnet.png">
+<p>绕过 2 层可以看做是在网络中的一个小分类器, 通过这种架构最后实现了神经网络超过1000层。<br>该层首先使用 1x1 卷积然后输出原来特征数的 1/4，然后使用 3×3 的卷积核，然后再次使用 1x1 的卷积核,输出的特征数为原来输入的大小。与BottleneckLayer类似大量地减少了计算量，但是却保留了丰富的高维特征信息。</p>
+<ul>
+<li>ResNet 可以被看作并行和串行多个模块的结合</li>
+<li>ResNet 上部分的输入和输出一样，所以看上去有点像 RNN，因此可以看做是一个更好的生物神经网络的模型</li>
+</ul>
+<h3 id="SqueezeNet-2016"><a href="#SqueezeNet-2016" class="headerlink" title="SqueezeNet 2016"></a>SqueezeNet 2016</h3><p>有着跟 AlexNet 一样的精度，参数却比 Alex 少了接近 50 倍并且参数只需要占用很小的内存空间。</p>
+<img src="/2018/06/12/CNN-入门/squeezenet.png">
+<h3 id="Xception-36层"><a href="#Xception-36层" class="headerlink" title="Xception 36层"></a>Xception 36层</h3><p>与 ResNet 和 Inception V4 一样简单且优雅的架构，并且改进了 Inception 模型。<br>与 ResNet-34 非常相似。但是模型的代码与 ResNet 一样简单，并且比 Inception V4 更容易理解。</p>
+<img src="/2018/06/12/CNN-入门/xception.png">
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/12/CNN-入门/" data-id="cjitosumd0000t4tl8ejd04ry" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/13/CNN基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CNN-基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/11/hexo入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南太行/">南太行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新疆/">新疆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆/">重庆</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/南太行/" style="font-size: 10px;">南太行</a> <a href="/tags/新疆/" style="font-size: 10px;">新疆</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/重庆/" style="font-size: 10px;">重庆</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/22/重庆重庆/">重庆重庆</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/22/VGG-详解/">VGG 详解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/21/南太行之行/">南太行之行</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/新疆攻略/">新疆攻略</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

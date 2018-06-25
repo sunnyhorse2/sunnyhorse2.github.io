@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>AlexNet 详解 | Mlq&#39;s Road</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CONTENTCNN-基础CNN入门AlexNet 详解VGG 详解  paper https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf 背景Imagenet大数据集，120万图片，1000类。6千万参数，65万神经元。  网络结构 5个卷积层，3个">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AlexNet 详解">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/AlexNet-详解/index.html">
+<meta property="og:site_name" content="Mlq&#39;s Road">
+<meta property="og:description" content="CONTENTCNN-基础CNN入门AlexNet 详解VGG 详解  paper https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf 背景Imagenet大数据集，120万图片，1000类。6千万参数，65万神经元。  网络结构 5个卷积层，3个">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/AlexNet-详解/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/AlexNet-详解/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/AlexNet-详解/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/AlexNet-详解/4.png">
+<meta property="og:updated_time" content="2018-06-22T02:19:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AlexNet 详解">
+<meta name="twitter:description" content="CONTENTCNN-基础CNN入门AlexNet 详解VGG 详解  paper https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf 背景Imagenet大数据集，120万图片，1000类。6千万参数，65万神经元。  网络结构 5个卷积层，3个">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/14/AlexNet-详解/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Mlq&#39;s Road" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mlq&#39;s Road</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Up and cool!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-AlexNet-详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/AlexNet-详解/" class="article-date">
+  <time datetime="2018-06-14T09:14:02.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习/">学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AlexNet 详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CONTENT<br><a href="/2018/06/13/CNN基础/" title="CNN-基础">CNN-基础</a><br><a href="/2018/06/12/CNN-入门/" title="CNN入门">CNN入门</a><br><a href="/2018/06/14/AlexNet-详解/" title="AlexNet 详解">AlexNet 详解</a><br><a href="/2018/06/22/VGG-详解/" title="VGG 详解">VGG 详解</a></p>
+<hr>
+<p>paper <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="noopener">https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Imagenet大数据集，120万图片，1000类。6千万参数，65万神经元。</p>
+<hr>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><img src="/2018/06/14/AlexNet-详解/1.png">
+<p>5个卷积层，3个全连接层，最后使用1000-way softmax.</p>
+<ul>
+<li>第一层 96个11×11×3 normalization+maxpooling</li>
+<li>第二层 256个5×5×48 normalization+maxpooling 交换传输至第三层</li>
+<li>第三层 384个3×3×256 </li>
+<li>第四层 384个3×3×192</li>
+<li>第五层 256个3×3×192 maxpooling 交换传输到第六层</li>
+<li>第六层 4096个neurons dropout</li>
+<li>第七层 4096个newrons dropout</li>
+<li>第八层 1000way softmax</li>
+</ul>
+<hr>
+<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><h3 id="ReLU激活函数"><a href="#ReLU激活函数" class="headerlink" title="ReLU激活函数"></a>ReLU激活函数</h3><p>特点：1、计算快，不需要除法 2、非饱和函数迭代次数少<br><img src="/2018/06/14/AlexNet-详解/2.png"><br>明显加快训练速度。</p>
+<h3 id="多GPU训练"><a href="#多GPU训练" class="headerlink" title="多GPU训练"></a>多GPU训练</h3><p>单个GTX580只有3GB存储，限制了网络参数数量，使用两个GPU训练，将一半核部署在单个GPU上，前后连接有单连接和交叉连接，通过交叉验证方式确定不同层之间的连接方式。</p>
+<h3 id="Local-Response-Normalization"><a href="#Local-Response-Normalization" class="headerlink" title="Local Response Normalization"></a>Local Response Normalization</h3><p>ReLU不需要输入规范化，这里规范化是为了模拟人脑神经单元增加横向抑制。<br><img src="/2018/06/14/AlexNet-详解/3.png"><br>附近的几个核做归一化。</p>
+<h3 id="Overlapping-Pooling"><a href="#Overlapping-Pooling" class="headerlink" title="Overlapping Pooling"></a>Overlapping Pooling</h3><p>移动间距小于核的尺寸，防止过拟合</p>
+<hr>
+<h2 id="减少过拟合的方法"><a href="#减少过拟合的方法" class="headerlink" title="减少过拟合的方法"></a>减少过拟合的方法</h2><h3 id="Data-augmentation"><a href="#Data-augmentation" class="headerlink" title="Data augmentation"></a>Data augmentation</h3><p>1、Label-perserving transformations<br>原图像256×256<br>训练集随机抽取其中224×224，再进行垂直翻转，扩大2048倍<br>测试机选取四角及中心小图像，再进行垂直翻转，扩大10倍<br>2、调整亮度<br>训练集数据则更加主成分<br><img src="/2018/06/14/AlexNet-详解/4.png"><br>p和λ是RGB元素协方差矩阵的特征值和特征向量，α是随机数，每个元素加上该向量，保留内部特征，以便训练得到无关光照强度和颜色的本质特征。</p>
+<h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p>类似于随机森林，通过一系列若分类器叠加得到一强分类器。<br>由于深度神经网络很庞大，采取折中的形式，在每次迭代中，每个隐藏元有0.5的概率输出为0，不参与前向和反向传播。<br>这样减少了神经元之间复杂的协同适应性，神经元不能依赖于某些特定的神经元的表现。<br>代价是迭代次数double.<br>在测试节点，输出需要×0.5</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/14/AlexNet-详解/" data-id="cjitosumd0001t4tlxupqme09" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/20/新疆攻略/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          新疆攻略
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/13/CNN基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CNN-基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南太行/">南太行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新疆/">新疆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆/">重庆</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/南太行/" style="font-size: 10px;">南太行</a> <a href="/tags/新疆/" style="font-size: 10px;">新疆</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/重庆/" style="font-size: 10px;">重庆</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/25/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/22/重庆重庆/">重庆重庆</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/22/VGG-详解/">VGG 详解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/21/南太行之行/">南太行之行</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/新疆攻略/">新疆攻略</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
