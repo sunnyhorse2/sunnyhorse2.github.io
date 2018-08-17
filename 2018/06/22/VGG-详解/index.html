@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Mlq&#39;s Road">
 <meta property="og:description" content="CONTENTCNN-基础CNN入门AlexNet 详解VGG 详解  paper https://arxiv.org/abs/1409.1556深度学习网络得益于大规模数据集和计算性能（GPU,分布架构）提升。 创新点主要创新点：深！为了更深，所有层使用更小的滤波器3×3 网络结构滤波层 3×3 filter——保留左右上下中心信息的最小尺寸 1×1 filter——输入的线性变换 stride">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-22T02:17:42.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/06/22/VGG-详解/1.png">
+<meta property="og:updated_time" content="2018-07-13T03:23:34.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VGG 详解">
 <meta name="twitter:description" content="CONTENTCNN-基础CNN入门AlexNet 详解VGG 详解  paper https://arxiv.org/abs/1409.1556深度学习网络得益于大规模数据集和计算性能（GPU,分布架构）提升。 创新点主要创新点：深！为了更深，所有层使用更小的滤波器3×3 网络结构滤波层 3×3 filter——保留左右上下中心信息的最小尺寸 1×1 filter——输入的线性变换 stride">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/22/VGG-详解/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Mlq&#39;s Road" type="application/atom+xml">
   
@@ -108,12 +110,20 @@
 </ul>
 <h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><ul>
 <li>前两层各4096channels</li>
+<li>最后一层1000soft-max layer</li>
+</ul>
+<p>所有隐含层使用ReLU,取消了Local Response Normalisation</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><img src="/2018/06/22/VGG-详解/1.png">
+<p>多个3×3卷积层有与大卷积有同样的receptive field,两个等同5×5，三个等同7×7。优势在于：<br>1、使用3个非线性整流层，使决策函数更具有区别性。<br>2、节省将近一半参数<br>1×1卷积层增加决策函数的非线性，但不影响receptive field。（Network in Network）</p>
+<h3 id="框架细节"><a href="#框架细节" class="headerlink" title="框架细节"></a>框架细节</h3><ul>
+<li>训练<br>batch size 256<br>momentem 0.9<br>dropout 0.5<br>learning rate 0.01, 10倍下降<br>370K iterations, 74 epochs(多层隐含规范化、小尺寸滤波，某些层预初始)<br>预处理先用浅层网络A做随机初始训练，取前4层和后3层做初始，训练其他网络。<br>训练尺寸采用抖动，图片大小取{256，512}之间，截取224</li>
+<li>测试<br>测试尺寸用3个尺寸，截取150测试集取平均。（缩放和随机选取）</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/22/VGG-详解/" data-id="cjitosumd0005t4tldgshoo00" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/22/VGG-详解/" data-id="cjkxppkfk0004dctlk1pgobu6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
@@ -152,7 +162,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a></li></ul>
     </div>
   </div>
 
@@ -162,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南太行/">南太行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新疆/">新疆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆/">重庆</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi-recognition/">wifi recognition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/关键帧抽取/">关键帧抽取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南太行/">南太行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/土耳其/">土耳其</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/在路上/">在路上</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新疆/">新疆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/西藏/">西藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音识别/">语音识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆/">重庆</a></li></ul>
     </div>
   </div>
 
@@ -172,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/南太行/" style="font-size: 10px;">南太行</a> <a href="/tags/新疆/" style="font-size: 10px;">新疆</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/重庆/" style="font-size: 10px;">重庆</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/wifi-recognition/" style="font-size: 10px;">wifi recognition</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/关键帧抽取/" style="font-size: 10px;">关键帧抽取</a> <a href="/tags/南太行/" style="font-size: 10px;">南太行</a> <a href="/tags/土耳其/" style="font-size: 10px;">土耳其</a> <a href="/tags/在路上/" style="font-size: 10px;">在路上</a> <a href="/tags/新疆/" style="font-size: 10px;">新疆</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/游记/" style="font-size: 15px;">游记</a> <a href="/tags/西藏/" style="font-size: 10px;">西藏</a> <a href="/tags/语音识别/" style="font-size: 15px;">语音识别</a> <a href="/tags/重庆/" style="font-size: 10px;">重庆</a>
     </div>
   </div>
 
@@ -181,7 +191,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
     </div>
   </div>
 
@@ -194,23 +204,23 @@
       <ul>
         
           <li>
-            <a href="/2018/06/25/hello-world/">Hello World</a>
+            <a href="/2018/08/17/土耳其攻略/">土耳其攻略</a>
           </li>
         
           <li>
-            <a href="/2018/06/22/重庆重庆/">重庆重庆</a>
+            <a href="/2018/08/17/《侣行》/">《侣行》</a>
           </li>
         
           <li>
-            <a href="/2018/06/22/VGG-详解/">VGG 详解</a>
+            <a href="/2018/08/15/西藏攻略/">西藏攻略</a>
           </li>
         
           <li>
-            <a href="/2018/06/21/南太行之行/">南太行之行</a>
+            <a href="/2018/08/15/《开车带狗去西藏27天》/">《开车带狗去西藏27天》</a>
           </li>
         
           <li>
-            <a href="/2018/06/20/新疆攻略/">新疆攻略</a>
+            <a href="/2018/07/19/深度压缩-入门/">深度压缩--入门</a>
           </li>
         
       </ul>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>关键帧抽取-入门 | Mlq&#39;s Road</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="入门帖https://zhuanlan.zhihu.com/p/36177424 端上的图像相似度算法选型 图像检索算法的基本步骤包括特征提取、指纹生成和相似度匹配。业界常用的图像相似度计算方法大致分为三类，传统的感知哈希算法、基于局部不变性的图像相似度匹配算法以及利用深度学习算法进行的图像相似度计算方法。 1、感知哈希 1.1 均值哈希通过对原始图像进行压缩（88）和灰度处理后计算压缩后的图像像">
+<meta name="keywords" content="关键帧抽取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关键帧抽取-入门">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/index.html">
+<meta property="og:site_name" content="Mlq&#39;s Road">
+<meta property="og:description" content="入门帖https://zhuanlan.zhihu.com/p/36177424 端上的图像相似度算法选型 图像检索算法的基本步骤包括特征提取、指纹生成和相似度匹配。业界常用的图像相似度计算方法大致分为三类，传统的感知哈希算法、基于局部不变性的图像相似度匹配算法以及利用深度学习算法进行的图像相似度计算方法。 1、感知哈希 1.1 均值哈希通过对原始图像进行压缩（88）和灰度处理后计算压缩后的图像像">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/4.jpg">
+<meta property="og:updated_time" content="2018-08-15T09:35:16.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关键帧抽取-入门">
+<meta name="twitter:description" content="入门帖https://zhuanlan.zhihu.com/p/36177424 端上的图像相似度算法选型 图像检索算法的基本步骤包括特征提取、指纹生成和相似度匹配。业界常用的图像相似度计算方法大致分为三类，传统的感知哈希算法、基于局部不变性的图像相似度匹配算法以及利用深度学习算法进行的图像相似度计算方法。 1、感知哈希 1.1 均值哈希通过对原始图像进行压缩（88）和灰度处理后计算压缩后的图像像">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/12/关键帧抽取-入门/1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Mlq&#39;s Road" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mlq&#39;s Road</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Up and cool!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关键帧抽取-入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/12/关键帧抽取-入门/" class="article-date">
+  <time datetime="2018-07-12T01:46:08.000Z" itemprop="datePublished">2018-07-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习/">学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关键帧抽取-入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="入门帖"><a href="#入门帖" class="headerlink" title="入门帖"></a>入门帖</h2><p><a href="https://zhuanlan.zhihu.com/p/36177424" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36177424</a> 端上的图像相似度算法选型</p>
+<p>图像检索算法的基本步骤包括特征提取、指纹生成和相似度匹配。业界常用的图像相似度计算方法大致分为三类，传统的感知哈希算法、基于局部不变性的图像相似度匹配算法以及利用深度学习算法进行的图像相似度计算方法。</p>
+<h3 id="1、感知哈希"><a href="#1、感知哈希" class="headerlink" title="1、感知哈希"></a>1、感知哈希</h3><img src="/2018/07/12/关键帧抽取-入门/1.jpg">
+<p>1.1 均值哈希<br>通过对原始图像进行压缩（8<em>8）和灰度处理后计算压缩后的图像像素均值，用8</em>8图像的64个像素与均值对比，大于均值为1，小于均值为0，得到得64位二进制编码即为原图像的ahash值。算法速度快，但精确度较低。</p>
+<p>1.2 差异哈希<br>与均值hash相比，差异hash同样要进行图像压缩和灰度处理，然后用每行的前一个像素与后一个像素对比，大于为1，小于为0，来生成指纹信息。算法精确度较高，速度较快。</p>
+<p>1.3 感知哈希<br>通过对原始图像进行压缩（32<em>32）和灰度处理后计算压缩，对其进行离散余弦变换后，用32</em>32图像的前8*8像素计算均值，8×8像素值大于均值为1，小于均值为0，得到64位指纹信息为原始图像的phash值。算法精准度较高，速度较差。</p>
+<p>三种算法实验对比<br><img src="/2018/07/12/关键帧抽取-入门/2.jpg"><br>（！！！很奇怪，均值哈希结果最好？？？）</p>
+<h3 id="2、基于局部不变性的图像相似度匹配算法"><a href="#2、基于局部不变性的图像相似度匹配算法" class="headerlink" title="2、基于局部不变性的图像相似度匹配算法"></a>2、基于局部不变性的图像相似度匹配算法</h3><p>相对于像素级的全局特征，局部特征在描述图像特征时更加灵活，其中SIFT（Scale-invariant feature transform）是比较常用的，具有较好的尺度不变性，即使改变旋转角度或者拍摄角度，仍然能够得到较好的检测效果。SIFT做特征检测具有良好的抗干扰能力。<br>参考：2017 年Araujo 和 Bernd Girod的论文：《Large-Scale Video Retrieval Using Image Queries》<br>2.1 SIFT特征提取+SIFT描述子<br><img src="/2018/07/12/关键帧抽取-入门/3.jpg"></p>
+<p>2.2 Hessian Affine特征提取+SIFT描述子<br>将SIFT特征点检测换成Hessian-Affine特征检测会有更好的效果，即先用Hessian-Affine检测特征点，后用SIFT描述子描述特征。<br>工程实现：<a href="https://github.com/andrefaraujo/videosearch" target="_blank" rel="noopener">https://github.com/andrefaraujo/videosearch</a><br><img src="/2018/07/12/关键帧抽取-入门/4.jpg"><br>基于局部不变特征做相似度计算具有良好的抗干扰能力，准确度优于传统感知哈希算法，对旋转不变性的支持优于卷积神经网络。最终权衡计算复杂度和检索效率，在端上选取Hessian-Affine做特征点检测，SIFT做描述子的方式进行图像相似度计算。</p>
+<h3 id="3、基于卷积神经网络的图像相似度算法"><a href="#3、基于卷积神经网络的图像相似度算法" class="headerlink" title="3、基于卷积神经网络的图像相似度算法"></a>3、基于卷积神经网络的图像相似度算法</h3><p>3.1 端到端<br>利用卷积神经网络计算相似度时，一种方法是直接采用端到端的方式，利用卷积层提取两张图片的特征，再用全连接层输出两张图片的“匹配度”。该方法对于少量图像相似度计算优势明显，但不适用于从大量图像中进行相似度匹配的场景，如视频检索。<br>参考： 2015年CVPR文章： 《Learning to Compare Image Patches via Convolutional Neural Networks》<br>      中文：<a href="https://blog.csdn.net/hjimce/article/details/50098483" target="_blank" rel="noopener">https://blog.csdn.net/hjimce/article/details/50098483</a></p>
+<p>3.2 提取中间产物<br>由于卷积操作的本质即为特征提取，卷积层输出的矩阵天然代表各种特征，通过对两张图片的特征矩阵进行相减，计算差值平方和（或者其他方式）得到的数值作为两张图片的相似度判断依据，即为利用卷积神经网络进行图像相似度计算的第二种方式。<br>实验结果对于裁剪、字幕、亮度调整的情况，差异值都在同一个数量级上，明显小于不同视频的情况，但是对于旋转的情况，该方法无效。</p>
+<h3 id="4、未来趋势"><a href="#4、未来趋势" class="headerlink" title="4、未来趋势"></a>4、未来趋势</h3><p>尽管基于局部特征不变性的图像相似度计算在抗干扰能力及计算复杂度上占优，但仅能表达图像浅层特性，而卷积神经网络具有多层次语义表达能力，不同层所提取的图像特征具有不同含义，低层次表达角点特征，中间层聚合角点特征表达物体部件，高层进一步表达整个物体，选择不同卷积层会提取出不同层次的特征。在计算复杂度及检索效率高要求的客户端将局部特征提取与卷积神经网络相结合互相弥补不足，突出优势，可能会带来更好的效果，未来将进一步探索。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p><a href="https://zhuanlan.zhihu.com/p/36177424" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36177424</a><br>电商，杜绝卖家为获取流量重复铺货<br><a href="https://www.zhihu.com/search?type=content&amp;q=%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96" target="_blank" rel="noopener">https://www.zhihu.com/search?type=content&amp;q=%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96</a><br>视频网站，识别物品选择广告投放</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/12/关键帧抽取-入门/" data-id="cjkxppkg7000odctlp2xfpkgk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/关键帧抽取/">关键帧抽取</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/12/语音识别-端侧/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          语音识别--端侧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/02/一个人的朝圣/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一个人的朝圣</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi-recognition/">wifi recognition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人脸识别/">人脸识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/关键帧抽取/">关键帧抽取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/南太行/">南太行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/土耳其/">土耳其</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/在路上/">在路上</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新疆/">新疆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游记/">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/西藏/">西藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音识别/">语音识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重庆/">重庆</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/wifi-recognition/" style="font-size: 10px;">wifi recognition</a> <a href="/tags/人脸识别/" style="font-size: 10px;">人脸识别</a> <a href="/tags/关键帧抽取/" style="font-size: 10px;">关键帧抽取</a> <a href="/tags/南太行/" style="font-size: 10px;">南太行</a> <a href="/tags/土耳其/" style="font-size: 10px;">土耳其</a> <a href="/tags/在路上/" style="font-size: 10px;">在路上</a> <a href="/tags/新疆/" style="font-size: 10px;">新疆</a> <a href="/tags/深度学习/" style="font-size: 20px;">深度学习</a> <a href="/tags/游记/" style="font-size: 15px;">游记</a> <a href="/tags/西藏/" style="font-size: 10px;">西藏</a> <a href="/tags/语音识别/" style="font-size: 15px;">语音识别</a> <a href="/tags/重庆/" style="font-size: 10px;">重庆</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/17/土耳其攻略/">土耳其攻略</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/17/《侣行》/">《侣行》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/西藏攻略/">西藏攻略</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/《开车带狗去西藏27天》/">《开车带狗去西藏27天》</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/19/深度压缩-入门/">深度压缩--入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
